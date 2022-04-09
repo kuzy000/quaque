@@ -1,0 +1,513 @@
+export global Theme := {
+    property<color> bg-light: #353b48;
+    property<color> bg-dark: #2f3640;
+    property<color> fg-light: #f5f6fa;
+    property<color> fg-dark: #f5f6fa;
+}
+    
+struct Corners := {
+    top-left: length,
+    top-right: length,
+    bottom-right: length,
+    bottom-left: length,
+}
+
+RoundRectangle := Rectangle {
+    property<color> fill;
+    property<Corners> radius: {
+        top-left: 1px,
+        top-right: 1px,
+        bottom-right: 1px,
+        bottom-left: 1px,
+    };
+    
+    Path { 
+        viewbox-width: parent.width / 1px;
+        viewbox-height: parent.height / 1px;
+        fill: parent.fill;
+        property w <=> viewbox-width;
+        property h <=> viewbox-height;
+        property<float> tl: radius.top-left / 1px;
+        property<float> tr: radius.top-right / 1px;
+        property<float> br: radius.bottom-right / 1px;
+        property<float> bl: radius.bottom-left / 1px;
+        MoveTo {
+            x: parent.tl; 
+            y: 0;
+        }
+        ArcTo {
+            radius-x: parent.tl;
+            radius-y: parent.tl;
+            x: 0; 
+            y: parent.tl;
+        }
+        LineTo {
+            x: 0;
+            y: parent.tl + 0.1;
+        }
+        LineTo {
+            x: 0;
+            y: parent.h - parent.bl - 0.1;
+        }
+        LineTo {
+            x: 0;
+            y: parent.h - parent.bl;
+        }
+        ArcTo {
+            radius-x: parent.bl;
+            radius-y: parent.bl;
+            x: parent.bl; 
+            y: parent.h;
+        }
+        LineTo {
+            x: parent.bl + 0.1;
+            y: parent.h;
+        }
+        LineTo {
+            x: parent.w - parent.br - 0.1;
+            y: parent.h;
+        }
+        LineTo {
+            x: parent.w - parent.br;
+            y: parent.h;
+        }
+        ArcTo {
+            radius-x: parent.br;
+            radius-y: parent.br;
+            x: parent.w;
+            y: parent.h - parent.br;
+        }
+        LineTo {
+            x: parent.w;
+            y: parent.h - parent.br - 0.1;
+        }
+        LineTo {
+            x: parent.w;
+            y: parent.tr + 0.1;
+        }
+        LineTo {
+            x: parent.w;
+            y: parent.tr;
+        }
+        ArcTo {
+            radius-x: parent.tr;
+            radius-y: parent.tr;
+            x: parent.w - parent.tr;
+            y: 0;
+        }
+        LineTo {
+            x: parent.w - parent.tr - 0.1;
+            y: 0;
+        }
+        LineTo {
+            x: parent.tl + 0.1;
+            y: 0;
+        }
+        Close {}
+    }
+}
+
+Volume := Rectangle { 
+    property<float> value: 0.4;
+    width: 100px; 
+    border-radius: 8px;
+    clip: true;
+
+    Rectangle { 
+        background: gray;
+        x: parent.width * value;
+        width: parent.width * (1 - value);
+    }
+    
+    Rectangle { 
+        background: lightgray;
+        width: parent.width * value;
+    }
+    
+    touch := TouchArea {
+        property<float> pressed-value;
+        pointer-event(event) => {
+            if (event.button == PointerEventButton.left && event.kind == PointerEventKind.down) {
+                pressed-value = root.value;
+            }
+        }
+        moved => {
+            if (enabled && pressed) {
+                value = max(0, min(1,
+                    pressed-value + (touch.mouse-x - touch.pressed-x) / root.width));
+            }
+        }
+    }
+}
+
+Text := Text {
+    color: white;   
+}
+
+TimelineSlider := Rectangle {  
+    property<float> value: 0.4;
+    property<length> thumb-width: 6px;
+    property<length> thumb-spacing: 2px;
+    height: 18px;
+
+    Rectangle {
+        height: 6px;
+        border-radius: 3px;
+        clip: true;
+        y: 6px;
+        Rectangle { 
+            background: gray;
+            x: root.width * root.value + thumb-width / 2 + thumb-spacing;
+            width: root.width * (1 - root.value) - thumb-width / 2 + thumb-spacing;
+        }
+        
+        Rectangle { 
+            background: lightgray;
+            width: root.width * root.value - thumb-width / 2 - thumb-spacing;
+        }
+    }
+    
+    Rectangle { 
+        width: root.thumb-width;
+        x: root.value * root.width - root.thumb-width / 2;
+        height: 18px;
+        border-radius: 2px;
+        background: white;
+    }
+    
+    touch := TouchArea {
+        property<float> pressed-value;
+        pointer-event(event) => {
+            if (event.button == PointerEventButton.left && event.kind == PointerEventKind.down) {
+                pressed-value = parent.value;
+            }
+        }
+        moved => {
+            if (enabled && pressed) {
+                parent.value = max(0, min(1,
+                    pressed-value + (touch.mouse-x - touch.pressed-x) / root.width));
+            }
+        }
+    }
+}
+
+Timeline := Rectangle {
+    property<float> current-sec: 27.8;
+    property<float> duration-sec: 135.3;
+    height: 18px;
+
+    HorizontalLayout {
+        callback format-time(float) -> string;
+        format-time(time) => {
+            (floor(time / 60)     < 10 ? "0" : "") + floor(time / 60) + ":" +
+            (mod(floor(time), 60) < 10 ? "0" : "") + mod(floor(time), 60)
+        }
+
+        spacing: 2px;
+        Text { 
+            vertical-alignment: center;
+            text: parent.format-time(current-sec);
+        }
+        VerticalLayout { 
+            alignment: center;
+            slider := TimelineSlider {}
+        }
+        Text { 
+            vertical-alignment: center;
+            text: parent.format-time(duration-sec);
+        }
+    }
+}
+
+Next := Rectangle {
+    Path { 
+        fill: blue;
+        viewbox-height: 10;
+        viewbox-width: 10;
+        commands: "M 2 3 L 2 7 L 5 5 Z M 5 3 L 5 7 L 8 5 Z";
+        visible: true;
+    }
+}
+
+Prev := Rectangle {
+    Path { 
+        fill: blue;
+        viewbox-height: 10;
+        viewbox-width: 10;
+        commands: "M 8 7 L 8 3 L 5 5 Z M 5 7 L 5 3 L 2 5 Z";
+        visible: true;
+    }
+}
+
+PlayPause := Rectangle {
+    property<bool> is-pause;
+
+    icon-pause := Path { 
+        fill: blue;
+        viewbox-height: 10;
+        viewbox-width: 10;
+        commands: "M 6 2 L 6 8 L 8 8 L 8 2 Z M 2 2 L 2 8 L 4 8 L 4 2 Z";
+        visible: true;
+    }
+
+    icon-play := Path { 
+        fill: blue;
+        viewbox-height: 10;
+        viewbox-width: 10;
+        commands: "M 3 2 L 3 8 L 7 5 Z";
+        visible: false;
+    }
+    
+    states [ 
+        pause when is-pause: {
+            icon-pause.visible: false;
+            icon-play.visible: true;
+        }
+    ]
+    
+    TouchArea { 
+        clicked => { is-pause = !is-pause; }
+    }
+}
+
+Header := Rectangle { 
+    height: 80px;
+    background: black;
+    
+    HorizontalLayout { 
+        padding: 10px;
+        spacing: 2px;
+        Rectangle { width: self.height; background: blue; }
+        VerticalLayout { 
+            spacing: 2px;
+            HorizontalLayout { 
+                spacing: 2px;
+                Prev { width: self.height; }
+                PlayPause { width: self.height; } 
+                Next { width: self.height; }
+                VerticalLayout { 
+                    alignment: center;
+                    Text { 
+                        text: "Track";
+                        font-weight: 900;
+                        vertical-alignment: top;
+                    }
+                    Text { 
+                        text: "Artist - Album";
+                        vertical-alignment: bottom;
+                    }
+                }
+                Rectangle {}
+                RoundRectangle { 
+                    radius: {
+                        top-left: 1px,
+                        top-right: 10px,
+                        bottom-right: 8px,
+                        bottom-left: 8px,
+                    };
+                }
+                Volume {}
+                Rectangle { width: self.height; background: green; }
+            }
+            Timeline {}
+        }
+    }
+}
+
+Playlist := Rectangle {
+    width: 300px;
+    background: lightcoral;
+    Flickable {
+        VerticalLayout { 
+            padding: 10px;
+            spacing: 2px;
+            for i in 100: Rectangle {
+                background: indianred;
+                HorizontalLayout {
+                    Rectangle { 
+                        width: self.height;
+                        background: blue;
+                    }
+                    VerticalLayout { 
+                        padding: 4px;
+                        Text {
+                            text: "Track " + (i + 1); 
+                            font-weight: 900;
+                            vertical-alignment: top;
+                        }
+                        Text { 
+                            text: "Artist - Album";
+                            vertical-alignment: bottom;
+                        } 
+                    }
+                }
+            }
+            Rectangle {}
+        }
+    }
+}
+
+TreeNode := Rectangle {
+    property<bool> folded: false; 
+    
+    states [ 
+        folded when folded : {
+            Children.height: 0;
+        }
+    ]
+    
+    transitions [ 
+        in folded : {
+            animate Children.height { duration: 100ms; }
+        }
+        out folded : {
+            animate Children.height { duration: 100ms; }
+        }
+    ]
+
+    HorizontalLayout { 
+        Rectangle { 
+            width: 20px;
+            height: 30px;
+            Path { 
+                viewbox-width: 8;
+                viewbox-height: 8;
+                fill: white;
+                commands: "M 2 3 L 6 3 L 4 6 Z";
+                visible: !root.folded;
+            }
+            Path { 
+                viewbox-width: 8;
+                viewbox-height: 8;
+                fill: white;
+                commands: "M 3 3 L 6 5 L 3 7 Z";
+                visible: root.folded;
+            }
+            TouchArea { 
+                clicked => { folded = !folded; }
+            }
+        }
+        VerticalLayout {
+            HorizontalLayout {
+                Rectangle { 
+                    width: 30px;
+                    height: self.width;
+                    background: red;
+                }
+                VerticalLayout { 
+                    padding: 4px;
+                    Text {
+                        text: "Artist"; 
+                        font-weight: 900;
+                        vertical-alignment: center;
+                    }
+                }
+            }
+            Children := VerticalLayout {
+                states [ 
+                    hidden when height <= 0 : {
+                        visible: false;
+                    }
+                ]
+                visible: true;
+                height: preferred-height;
+                clip: true;
+                @children
+            }
+        }
+    }
+}
+
+TracksLine := Rectangle {
+    HorizontalLayout {
+        Rectangle { 
+            width: 20px;
+            Path { 
+                viewbox-x: -width / height * 8; 
+                viewbox-y: 0;
+                viewbox-width: width / height * 8; 
+                viewbox-height: 8;
+                stroke: white;
+                stroke-width: 1px;
+                commands: "M 0 0 L 0 8 Z";
+            }
+        }
+        VerticalLayout {
+            @children
+        }
+    }
+}
+
+Track := Rectangle {
+    height: 20px;
+    HorizontalLayout { 
+        spacing: 2px;
+        Path { 
+            width: 10px; 
+            height: 20px; 
+            viewbox-height: 8;
+            viewbox-width: 8;
+            stroke: white;
+            stroke-width: 1px;
+            commands: "M 0 4 L 8 4 Z";
+        }
+        Text { 
+            text: "Track"; 
+            vertical-alignment: center;
+        }
+    }
+}
+
+Tree := Rectangle {
+    width: 300px;
+    background: black;
+    Flickable { 
+        VerticalLayout { 
+            padding: 10px;
+            for i in 10: TreeNode {
+                TreeNode {
+                    TracksLine {
+                        Track {}
+                        Track {}
+                        Track {}
+                    }
+                }
+                TreeNode {
+                    TracksLine {
+                        Track {}
+                        Track {}
+                        Track {}
+                        Track {}
+                        Track {}
+                        Track {}
+                    }
+                }
+                TreeNode {
+                    TracksLine {
+                        Track {}
+                        Track {}
+                    }
+                }
+            }
+        }
+    }
+}
+
+MyApp := Window {
+    width: 620px;
+    height: 800px;
+
+    Rectangle { 
+        background: lightgray;
+        VerticalLayout { 
+            Header {}
+            Rectangle { 
+                background: yellow;
+                HorizontalLayout { 
+                    Tree {}
+                    Playlist {}
+                }
+            }
+        }
+    }
+}

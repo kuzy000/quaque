@@ -1,8 +1,22 @@
 export global Theme := {
-    property<color> bg-light: #353b48;
-    property<color> bg-dark: #2f3640;
-    property<color> fg-light: #f5f6fa;
-    property<color> fg-dark: #f5f6fa;
+    property<color> bg-light: #383a3f;
+    property<color> bg-dark: #212325;
+    property<color> fg-light: #f7f9fd;
+    property<color> fg-dark: #dadce0;
+
+    property<color> selected: #2e2ca0ff;
+    property<color> hover: #2e2ca070;
+    
+    property<string> icon-play: "m 71.416858,53.966548 -0.763677,0.440583 -11.485625,6.626321 -25.128432,14.497171 -0.871569,0.502828 C 30.11128,77.796687 26.292207,75.590928 26.292207,72.062498 V 70.800696 57.937502 29.461044 27.937502 c 0,-3.52843 3.819073,-5.734189 6.875348,-3.970953 l 1.083285,0.624972 11.166019,6.441935 25.137912,14.50264 0.862088,0.497359 c 3.054579,1.762257 3.054578,6.170837 -10e-7,7.933093 z";
+    property<string> icon-pause: "m 25,25.291667 v 1.240737 47.52815 0.647779 C 25,77.63084 27.36916,80 30.291667,80 h 0.971496 7.451102 0.994068 C 42.63084,80 45,77.63084 45,74.708333 V 74.099286 26.528761 25.291667 C 45,22.36916 42.63084,20 39.708333,20 H 38.885502 31.308048 30.291667 C 27.36916,20 25,22.36916 25,25.291667 Z m 30,0 v 0.913823 47.541182 0.961661 C 55,77.63084 57.36916,80 60.291667,80 h 1.23401 7.473296 0.70936 C 72.63084,80 75,77.63084 75,74.708333 V 73.941505 27.188197 25.291667 C 75,22.36916 72.63084,20 69.708333,20 H 68.853231 61.27832 60.291667 C 57.36916,20 55,22.36916 55,25.291667 Z";
+    property<string> icon-next: "M 24.607422 34.912109 C 23.032112 34.93967 21.599609 36.206814 21.599609 37.970703 L 21.599609 39.324219 L 21.599609 55.291016 L 21.599609 61.421875 L 21.599609 62.029297 C 21.599609 64.381149 24.14683 65.849754 26.183594 64.673828 L 26.662109 64.396484 L 41.183594 56.013672 L 46.314453 53.050781 L 47.017578 52.646484 C 49.054342 51.470558 49.054342 48.529442 47.017578 47.353516 L 46.388672 46.990234 L 32.017578 38.693359 L 27.041016 35.820312 L 26.183594 35.326172 C 25.674403 35.03219 25.132525 34.902922 24.607422 34.912109 z M 53.007812 34.912109 C 51.432503 34.93967 50 36.206814 50 37.970703 L 50 39.324219 L 50 55.291016 L 50 61.421875 L 50 62.029297 C 50 64.381149 52.545267 65.849754 54.582031 64.673828 L 55.0625 64.396484 L 69.582031 56.013672 L 74.714844 53.050781 L 75.417969 52.646484 C 77.454733 51.470558 77.454733 48.529442 75.417969 47.353516 L 74.789062 46.990234 L 60.417969 38.693359 L 55.441406 35.820312 L 54.582031 35.326172 C 54.07284 35.03219 53.532916 34.902922 53.007812 34.912109 z ";
+    property<string> icon-prev: "m 73.937729,65.087433 c 1.57531,-0.02756 3.007813,-1.294705 3.007813,-3.058594 V 60.675323 44.708526 38.577667 37.970245 c 0,-2.351852 -2.547221,-3.820457 -4.583985,-2.644531 l -0.478515,0.277344 -14.521485,8.382812 -5.130859,2.962891 -0.703125,0.404297 c -2.036764,1.175926 -2.036764,4.117042 0,5.292968 l 0.628906,0.363282 14.371094,8.296875 4.976562,2.873047 0.857422,0.49414 c 0.509191,0.293982 1.051069,0.42325 1.576172,0.414063 z m -28.40039,0 c 1.575309,-0.02756 3.007812,-1.294705 3.007812,-3.058594 V 60.675323 44.708526 38.577667 37.970245 c 0,-2.351852 -2.545267,-3.820457 -4.582031,-2.644531 l -0.480469,0.277344 -14.519531,8.382812 -5.132813,2.962891 -0.703125,0.404297 c -2.036764,1.175926 -2.036764,4.117042 0,5.292968 l 0.628907,0.363282 14.371093,8.296875 4.976563,2.873047 0.859375,0.49414 c 0.509191,0.293982 1.049115,0.42325 1.574219,0.414063 z";
+    //property<string> icon-volume: "m 80.577445,14.058277 a 4.8212404,4.8212404 0 0 0 -3.542628,1.030701 4.8212404,4.8212404 0 0 0 -0.745476,6.77734 c 6.828662,8.519418 10.5663,18.030038 10.5663,28.133582 0,10.103544 -3.737638,19.614164 -10.5663,28.133582 a 4.8212404,4.8212404 0 0 0 0.745476,6.77734 4.8212404,4.8212404 0 0 0 6.777339,-0.745474 C 91.775568,74.230221 96.498199,62.509432 96.498199,49.9999 c 0,-12.509532 -4.722631,-24.230321 -12.686043,-34.165448 a 4.8212404,4.8212404 0 0 0 -3.234711,-1.776175 z m -34.849341,0.340325 c -1.441061,0.0226 -3.176334,0.883667 -5.046542,2.651298 -4.243555,4.010805 -8.489262,8.019038 -12.731419,12.03132 -0.864342,0.817506 -2.527944,1.481227 -3.717652,1.481227 H 20.281473 8.840052 a 5.3386685,5.3386685 0 0 0 -5.338251,5.33825 v 8.760953 19.437453 a 5.3386685,5.3386685 0 0 0 5.338251,5.33825 H 9.6049735 24.232491 c 1.189708,0 2.853211,0.663825 3.717652,1.481227 4.242644,4.011766 8.488193,8.023408 12.731419,12.034561 4.986837,4.714092 9.029971,2.969626 9.029971,-3.892677 V 62.426645 20.939335 c 0,-4.288939 -1.581661,-6.578397 -3.983429,-6.540733 z m 16.199497,9.684694 a 4.8212404,4.8212404 0 0 0 -3.542626,1.0307 4.8212404,4.8212404 0 0 0 -0.748717,6.777343 c 4.448452,5.549872 6.8292,11.643713 6.8292,18.108561 0,6.464848 -2.380748,12.558689 -6.8292,18.108562 a 4.8212404,4.8212404 0 0 0 0.748717,6.777342 4.8212404,4.8212404 0 0 0 6.77734,-0.745476 c 5.5832,-6.965581 8.945701,-15.26959 8.945701,-24.140428 0,-8.870838 -3.362501,-17.174847 -8.945701,-24.140428 a 4.8212404,4.8212404 0 0 0 -3.234714,-1.776176 z";
+    property<string> icon-volume1: "m 45.728104,14.398602 c -1.441061,0.0226 -3.176334,0.883667 -5.046542,2.651298 -4.243555,4.010805 -8.489262,8.019038 -12.731419,12.03132 -0.864342,0.817506 -2.527944,1.481227 -3.717652,1.481227 H 20.281473 8.840052 a 5.3386685,5.3386685 0 0 0 -5.338251,5.33825 v 8.760953 19.437453 a 5.3386685,5.3386685 0 0 0 5.338251,5.33825 H 9.6049735 24.232491 c 1.189708,0 2.853211,0.663825 3.717652,1.481227 4.242644,4.011766 8.488193,8.023408 12.731419,12.034561 4.986837,4.714092 9.029971,2.969626 9.029971,-3.892677 V 62.426645 20.939335 c 0,-4.288939 -1.581661,-6.578397 -3.983429,-6.540733 z";
+    property<string> icon-volume2: "m 61.927601,24.083296 a 4.8212404,4.8212404 0 0 0 -3.542626,1.0307 4.8212404,4.8212404 0 0 0 -0.748717,6.777343 c 4.448452,5.549872 6.8292,11.643713 6.8292,18.108561 0,6.464848 -2.380748,12.558689 -6.8292,18.108562 a 4.8212404,4.8212404 0 0 0 0.748717,6.777342 4.8212404,4.8212404 0 0 0 6.77734,-0.745476 c 5.5832,-6.965581 8.945701,-15.26959 8.945701,-24.140428 0,-8.870838 -3.362501,-17.174847 -8.945701,-24.140428 a 4.8212404,4.8212404 0 0 0 -3.234714,-1.776176 z";
+    property<string> icon-volume3: "m 80.518511,14.058277 a 4.8212404,4.8212404 0 0 0 -3.542628,1.030701 4.8212404,4.8212404 0 0 0 -0.745476,6.77734 c 6.828662,8.519418 10.5663,18.030038 10.5663,28.133582 0,10.103544 -3.737638,19.614164 -10.5663,28.133582 a 4.8212404,4.8212404 0 0 0 0.745476,6.77734 4.8212404,4.8212404 0 0 0 6.777339,-0.745474 C 91.716634,74.230221 96.439265,62.509432 96.439265,49.9999 c 0,-12.509532 -4.722631,-24.230321 -12.686043,-34.165448 a 4.8212404,4.8212404 0 0 0 -3.234711,-1.776175 z";
+    
+    property<string> icon-playing: "M 10,14.565931 V 16.249622 88.582879 90 H 11.191024 28.603515 30 V 88.26935 16.537424 14.565931 C 30,12.044237 27.955763,10 25.434069,10 H 24.275775 15.522064 14.565931 C 12.044237,10 10,12.044237 10,14.565931 Z M 70,42.548353 V 44.106628 88.366945 90 H 72.516275 88.500064 90 v -1.701459 -43.820978 -1.92921 c 0,-2.521694 -2.044237,-4.565931 -4.565931,-4.565931 H 84.467373 75.987475 74.565931 C 72.044237,37.982422 70,40.026659 70,42.548353 Z M 40,70.771009 V 72.042908 88.781205 90 H 41.698105 57.342147 60 V 88.845038 72.54072 70.771009 c 0,-2.521694 -2.044237,-4.565931 -4.565931,-4.565931 H 54.353284 45.628436 44.565931 C 42.044237,66.205078 40,68.249315 40,70.771009 Z";
 }
     
 struct Corners := {
@@ -109,19 +123,50 @@ RoundRectangle := Rectangle {
 
 Volume := Rectangle { 
     property<float> value: 0.4;
-    width: 100px; 
-    border-radius: 8px;
+    width: 120px; 
+    height: 30px;
+    border-radius: 6px;
     clip: true;
-
+    
+    
     Rectangle { 
-        background: gray;
+        background: #666;
         x: parent.width * value;
         width: parent.width * (1 - value);
     }
     
     Rectangle { 
-        background: lightgray;
+        background: #888;
         width: parent.width * value;
+    }
+
+    VerticalLayout { 
+        alignment: center;
+        Rectangle { 
+            x: 8px;
+            height: 20px;
+            width: height;
+            Path { 
+                fill: white;
+                viewbox-width: 100;
+                viewbox-height: 100;
+                commands: Theme.icon-volume1;
+            }
+            Path { 
+                fill: white;
+                viewbox-width: 100;
+                viewbox-height: 100;
+                commands: Theme.icon-volume2;
+                visible: root.value >= 0.3;
+            }
+            Path { 
+                fill: white;
+                viewbox-width: 100;
+                viewbox-height: 100;
+                commands: Theme.icon-volume3;
+                visible: root.value >= 0.6;
+            }
+        }
     }
     
     touch := TouchArea {
@@ -145,7 +190,7 @@ Text := Text {
 }
 
 TimelineSlider := Rectangle {  
-    property<float> value: 0.4;
+    property<float> value: 0.2;
     property<length> thumb-width: 6px;
     property<length> thumb-spacing: 2px;
     height: 18px;
@@ -205,36 +250,44 @@ Timeline := Rectangle {
 
         spacing: 2px;
         Text { 
+            width: 40px;
+            horizontal-alignment: center;
             vertical-alignment: center;
             text: parent.format-time(current-sec);
+            font-size: 10px;
+            font-weight: 900;
         }
         VerticalLayout { 
             alignment: center;
             slider := TimelineSlider {}
         }
         Text { 
+            width: 40px;
+            horizontal-alignment: center;
             vertical-alignment: center;
             text: parent.format-time(duration-sec);
+            font-size: 10px;
+            font-weight: 900;
         }
     }
 }
 
 Next := Rectangle {
     Path { 
-        fill: blue;
-        viewbox-height: 10;
-        viewbox-width: 10;
-        commands: "M 2 3 L 2 7 L 5 5 Z M 5 3 L 5 7 L 8 5 Z";
+        fill: white;
+        viewbox-height: 100;
+        viewbox-width: 100;
+        commands: Theme.icon-next; 
         visible: true;
     }
 }
 
 Prev := Rectangle {
     Path { 
-        fill: blue;
-        viewbox-height: 10;
-        viewbox-width: 10;
-        commands: "M 8 7 L 8 3 L 5 5 Z M 5 7 L 5 3 L 2 5 Z";
+        fill: white;
+        viewbox-height: 100;
+        viewbox-width: 100;
+        commands: Theme.icon-prev; 
         visible: true;
     }
 }
@@ -242,28 +295,21 @@ Prev := Rectangle {
 PlayPause := Rectangle {
     property<bool> is-pause;
 
-    icon-pause := Path { 
-        fill: blue;
-        viewbox-height: 10;
-        viewbox-width: 10;
-        commands: "M 6 2 L 6 8 L 8 8 L 8 2 Z M 2 2 L 2 8 L 4 8 L 4 2 Z";
-        visible: true;
+    Path { 
+        fill: white;
+        viewbox-height: 100;
+        viewbox-width: 100;
+        commands: Theme.icon-pause; 
+        opacity: is-pause ? 0 : 1; 
     }
 
-    icon-play := Path { 
-        fill: blue;
-        viewbox-height: 10;
-        viewbox-width: 10;
-        commands: "M 3 2 L 3 8 L 7 5 Z";
-        visible: false;
+    Path { 
+        fill: white;
+        viewbox-height: 100;
+        viewbox-width: 100;
+        commands: Theme.icon-play;
+        opacity: is-pause ? 1 : 0;
     }
-    
-    states [ 
-        pause when is-pause: {
-            icon-pause.visible: false;
-            icon-play.visible: true;
-        }
-    ]
     
     TouchArea { 
         clicked => { is-pause = !is-pause; }
@@ -272,77 +318,166 @@ PlayPause := Rectangle {
 
 Header := Rectangle { 
     height: 80px;
-    background: black;
+    background: Theme.bg-light;
     
     HorizontalLayout { 
         padding: 10px;
-        spacing: 2px;
-        Rectangle { width: self.height; background: blue; }
+        spacing: 10px;
+        Rectangle { 
+            width: self.height; 
+            background: gray;
+            border-radius: 4px;
+        }
         VerticalLayout { 
             spacing: 2px;
-            HorizontalLayout { 
-                spacing: 2px;
-                Prev { width: self.height; }
-                PlayPause { width: self.height; } 
-                Next { width: self.height; }
-                VerticalLayout { 
-                    alignment: center;
-                    Text { 
-                        text: "Track";
-                        font-weight: 900;
-                        vertical-alignment: top;
+            Rectangle {
+                height: 40px;
+                HorizontalLayout { 
+                    spacing: 2px;
+                    Prev { width: self.height; }
+                    PlayPause { width: self.height; } 
+                    Next { width: self.height; }
+                    Rectangle { width: 6px; }
+                    VerticalLayout { 
+                        alignment: center;
+                        Text { 
+                            text: "Track";
+                            vertical-alignment: top;
+                            font-weight: 900;
+                            font-size: 14px;
+                        }
+                        Text { 
+                            text: "Artist - Album";
+                            vertical-alignment: bottom;
+                        }
                     }
-                    Text { 
-                        text: "Artist - Album";
-                        vertical-alignment: bottom;
+                    Rectangle {}
+                    RoundRectangle { 
+                        radius: {
+                            top-left: 1px,
+                            top-right: 10px,
+                            bottom-right: 8px,
+                            bottom-left: 8px,
+                        };
                     }
+                    VerticalLayout {
+                        alignment: center;
+                        Volume {}
+                    }
+                    Rectangle { width: self.height; }
                 }
-                Rectangle {}
-                RoundRectangle { 
-                    radius: {
-                        top-left: 1px,
-                        top-right: 10px,
-                        bottom-right: 8px,
-                        bottom-left: 8px,
-                    };
-                }
-                Volume {}
-                Rectangle { width: self.height; background: green; }
             }
             Timeline {}
         }
     }
 }
 
+PanelTitle := Text {
+    height: 40px;
+    x: 14px;
+    text: "Title";
+    vertical-alignment: center;
+    font-weight: 900;
+    font-size: 16px;
+    color: lightgray;
+}
+
+PlaylistItem := Rectangle {
+    property<string> name;
+    property<bool> selected;
+    property<bool> playing;
+
+    height: 24px;
+
+    HorizontalLayout {
+        padding-left: 3px;
+        spacing: 4px;
+        Rectangle { 
+            width: 20px; 
+            Path { 
+                viewbox-width: 100;
+                viewbox-height: 100;
+
+                fill: white;
+                commands: Theme.icon-playing;
+            }
+            visible: playing;
+        }
+        Rectangle {
+            background: 
+                selected ? Theme.selected : 
+                touch.has-hover ? Theme.hover : transparent;
+            border-radius: 3px;
+            Text { 
+                x: 8px;
+                height: parent.height; 
+                text: root.name;
+                vertical-alignment: center;
+            }
+        }
+    }
+    
+    touch := TouchArea {}
+}
+
+
+Playlists := Rectangle {
+    VerticalLayout { 
+        padding-left: 10px;
+        padding-right: 10px;
+        spacing: 2px;
+        PlaylistItem { name: "Recently played"; playing: true; }
+        PlaylistItem { name: "All tracks"; selected: true; }
+        for i in 8: PlaylistItem {
+            name: "Playlist " + (i + 1);
+        }
+    }
+}
+
 Playlist := Rectangle {
-    width: 300px;
-    background: lightcoral;
-    Flickable {
-        VerticalLayout { 
-            padding: 10px;
-            spacing: 2px;
-            for i in 100: Rectangle {
-                background: indianred;
-                HorizontalLayout {
-                    Rectangle { 
-                        width: self.height;
-                        background: blue;
-                    }
-                    VerticalLayout { 
-                        padding: 4px;
-                        Text {
-                            text: "Track " + (i + 1); 
-                            font-weight: 900;
-                            vertical-alignment: top;
-                        }
-                        Text { 
-                            text: "Artist - Album";
-                            vertical-alignment: bottom;
-                        } 
-                    }
+    VerticalLayout {
+        Rectangle {
+            height: 40px;
+            HorizontalLayout { 
+                padding: 6px;
+                spacing: 6px;
+                Rectangle { width: height; background: gray; }
+                Rectangle { width: height; background: gray; }
+                Rectangle { 
+                    background: gray;
+                    border-radius: 4px;
+                    border-width: 2px;
+                    border-color: lightgray;
                 }
             }
-            Rectangle {}
+        }
+        Flickable {
+            VerticalLayout { 
+                padding: 10px;
+                spacing: 2px;
+                for i in 100: Rectangle {
+                    HorizontalLayout {
+                        Rectangle { 
+                            width: self.height;
+                            background: darkgray;
+                            border-radius: 6px;
+                        }
+                        VerticalLayout { 
+                            padding: 4px;
+                            Text {
+                                text: "Track " + (i + 1); 
+                                font-weight: 900;
+                                vertical-alignment: top;
+                            }
+                            Text { 
+                                text: "Artist - Album";
+                                vertical-alignment: bottom;
+                            } 
+                        }
+                    }
+                }
+                Rectangle {}
+            }
         }
     }
 }
@@ -390,9 +525,10 @@ TreeNode := Rectangle {
         VerticalLayout {
             HorizontalLayout {
                 Rectangle { 
-                    width: 30px;
+                    width: 24px;
                     height: self.width;
-                    background: red;
+                    background: darkgray;
+                    border-radius: 4px;
                 }
                 VerticalLayout { 
                     padding: 4px;
@@ -404,21 +540,19 @@ TreeNode := Rectangle {
                 }
             }
             Children := VerticalLayout {
-                states [ 
-                    hidden when height <= 0 : {
-                        visible: false;
-                    }
-                ]
-                visible: true;
+                visible: height > 0;
                 height: preferred-height;
                 clip: true;
-                @children
+
+                VerticalLayout {
+                    @children
+                }
             }
         }
     }
 }
 
-TracksLine := Rectangle {
+TracksContainer := Rectangle {
     HorizontalLayout {
         Rectangle { 
             width: 20px;
@@ -459,36 +593,45 @@ Track := Rectangle {
 }
 
 Tree := Rectangle {
-    width: 300px;
-    background: black;
-    Flickable { 
-        VerticalLayout { 
-            padding: 10px;
-            for i in 10: TreeNode {
-                TreeNode {
-                    TracksLine {
-                        Track {}
-                        Track {}
-                        Track {}
-                    }
-                }
-                TreeNode {
-                    TracksLine {
-                        Track {}
-                        Track {}
-                        Track {}
-                        Track {}
-                        Track {}
-                        Track {}
-                    }
-                }
-                TreeNode {
-                    TracksLine {
-                        Track {}
-                        Track {}
-                    }
+    VerticalLayout { 
+        padding-left: 10px;
+        padding-right: 10px;
+        for i in 10: TreeNode {
+            TreeNode {
+                TracksContainer {
+                    Track {}
+                    Track {}
+                    Track {}
                 }
             }
+            TreeNode {
+                TracksContainer {
+                    Track {}
+                    Track {}
+                    Track {}
+                    Track {}
+                    Track {}
+                    Track {}
+                }
+            }
+            TreeNode {
+                TracksContainer {
+                    Track {}
+                    Track {}
+                }
+            }
+        }
+    }
+}
+
+SidePanel := Rectangle {
+    Flickable { 
+        VerticalLayout {
+            PanelTitle { text: "Playlists"; }
+            Playlists {}
+            PanelTitle { text: "Library"; }
+            Tree {}
+            Rectangle { height: 10px; }
         }
     }
 }
@@ -496,16 +639,34 @@ Tree := Rectangle {
 MyApp := Window {
     width: 620px;
     height: 800px;
-
+    
     Rectangle { 
-        background: lightgray;
+        background: Theme.bg-dark;
         VerticalLayout { 
-            Header {}
+            Header {
+                drop-shadow-color: #000a;
+                drop-shadow-offset-y: 0px;
+                drop-shadow-blur: 4px;
+                z: 1;
+            }
             Rectangle { 
-                background: yellow;
                 HorizontalLayout { 
-                    Tree {}
-                    Playlist {}
+                    Rectangle {
+                        width: 300px;
+                        SidePanel {}
+                    }
+                    Rectangle { 
+                        width: 2px; 
+                        background: gray;
+                    }
+                    Rectangle {
+                        width: 300px;
+                        Playlist {}
+                    }
+                    Rectangle { 
+                        width: 2px; 
+                        background: gray;
+                    }
                 }
             }
         }

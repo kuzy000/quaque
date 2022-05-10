@@ -2,5 +2,7 @@
 
 members = [
     "dl-spotify",
+    "daemon",
+    "ctl",
     "ui",
 ]

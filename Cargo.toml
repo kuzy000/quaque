@@ -1,5 +1,6 @@
 [workspace]
 
 members = [
+    "dl-spotify",
     "ui",
 ]

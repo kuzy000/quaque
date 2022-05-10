@@ -4,3 +4,4 @@ Cargo.lock
 
 debug/
 target/
+librespot_cache/

@@ -1,8 +1,12 @@
 [package]
-name = "ay-daemon"
+name = "quaque-daemon"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+tokio = { version = "1", features = ["full"] }
+lewton = { version = "0.10.2", features = ["async_ogg"] }
+sdl2 = "0.35.2"
+interprocess = { version = "1", features = ["nonblocking"] }
